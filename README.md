@@ -4,7 +4,7 @@ Single threaded Python interface for the GameJolt API running through HTTP reque
 
 ## Reference
 
-### `GameJoltAPI(gameId, privateKey, username=None, userToken=None, responseFormat="json", submitRequests=True)`
+#### `GameJoltAPI(gameId, privateKey, username=None, userToken=None, responseFormat="json", submitRequests=True)`
 
 The main GameJolt API class. Aside from the required arguments, most of the optional arguments are provided to avoid asking for them in every single method.
 
