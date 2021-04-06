@@ -18,7 +18,7 @@ sys.path.insert(0, os.path.abspath('..'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'gamejoltapi'
+project = 'Python GameJolt API'
 copyright = f'{datetime.datetime.now().year}, Joel Gomes da Silva'
 author = 'Joel Gomes da Silva'
 
