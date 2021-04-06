@@ -6,7 +6,7 @@ from ast import literal_eval
 from collections import OrderedDict
 from pprint import pprint, pformat
 
-_DEBUG = True
+_DEBUG = False
 API_URL = "https://api.gamejolt.com/api/game/v1_2"
 RETURN_FORMATS = ["json", "keypair", "dump", "xml"]
 
