@@ -29,4 +29,6 @@ MANIFEST
 
 # Other
 ex_*.*
-_build
+.vscode/
+docs/_build/
+docs/_sources/
