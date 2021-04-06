@@ -1,0 +1,699 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Python Gamejolt API - Reference &mdash; gamejoltapi  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="#" class="icon icon-home"> gamejoltapi
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Python Gamejolt API - Reference</a><ul>
+<li><a class="reference internal" href="#classes">Classes</a></li>
+<li><a class="reference internal" href="#exceptions">Exceptions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">gamejoltapi</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Python Gamejolt API - Reference</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="python-gamejolt-api-reference">
+<h1>Python Gamejolt API - Reference<a class="headerlink" href="#python-gamejolt-api-reference" title="Permalink to this headline">¶</a></h1>
+<p>This module is a single threaded Python interface for the <a class="reference external" href="https://gamejolt.com/game-api/doc">GameJolt API</a> running through HTTP requests.
+It contains all GameJolt API endpoints and aims to be used with less hassle possible.
+The source code of this module can be found <a class="reference external" href="https://github.com/bgempire/gamejoltapi">here</a>.</p>
+<p>To instance the main class just provide the required data and you’re ready to call any of the API methods.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gamejoltapi</span>
+
+<span class="n">GAME_ID</span> <span class="o">=</span> <span class="s2">&quot;602381&quot;</span>
+<span class="n">PRIVATE_KEY</span> <span class="o">=</span> <span class="s2">&quot;de7ac4c81d064cdc1121b495e2165b53&quot;</span>
+<span class="n">USERNAME</span> <span class="o">=</span> <span class="s2">&quot;bgempire&quot;</span>
+<span class="n">TOKEN</span> <span class="o">=</span> <span class="s2">&quot;bgempire&quot;</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="n">gamejoltapi</span><span class="o">.</span><span class="n">GameJoltAPI</span><span class="p">(</span>
+   <span class="n">GAME_ID</span><span class="p">,</span>
+   <span class="n">PRIVATE_KEY</span><span class="p">,</span>
+   <span class="n">username</span><span class="o">=</span><span class="n">USERNAME</span><span class="p">,</span>
+   <span class="n">userToken</span><span class="o">=</span><span class="n">TOKEN</span><span class="p">,</span>
+   <span class="n">responseFormat</span><span class="o">=</span><span class="s2">&quot;json&quot;</span><span class="p">,</span>
+   <span class="n">submitRequests</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><dl class="py class">
+<dt id="gamejoltapi.GameJoltAPI">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gamejoltapi.</span></code><code class="sig-name descname"><span class="pre">GameJoltAPI</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gameId</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">privateKey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">userToken</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">responseFormat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'json'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">submitRequests</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gamejoltapi.GameJoltAPI" title="Permalink to this definition">¶</a></dt>
+<dd><p>The main GameJolt API class. Aside from the required arguments, most of the 
+optional arguments are provided to avoid asking for them in every single method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gameId</strong> (<em>int</em>) – The game ID. Required in all requests.</p></li>
+<li><p><strong>privateKey</strong> (<em>str</em>) – The API private key. Required in all requests.</p></li>
+<li><p><strong>username</strong> (<em>str</em>) – Username used in some requests. Optional.</p></li>
+<li><p><strong>userToken</strong> (<em>str</em>) – User access token used in some requests. Optional.</p></li>
+<li><p><strong>responseFormat</strong> (<em>str</em>) – The response format of the requests. Can be <cite>“json”</cite>, <cite>“xml”</cite>, <cite>“keypair”</cite> or <cite>“dump”</cite>. Optional, defaults to <cite>“json”</cite>.</p></li>
+<li><p><strong>submitRequests</strong> (<em>bool</em>) – If submit the requests or just get the generated URLs from the method calls. Useful to generate URLs for batch requests. Optional, defaults to <cite>True</cite>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="gamejoltapi.GameJoltAPI.gameId">
+<code class="sig-name descname"><span class="pre">gameId</span></code><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#gamejoltapi.GameJoltAPI.gameId" title="Permalink to this definition">¶</a></dt>
+<dd><p>The game ID. Required in all requests.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="gamejoltapi.GameJoltAPI.privateKey">
+<code class="sig-name descname"><span class="pre">privateKey</span></code><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#gamejoltapi.GameJoltAPI.privateKey" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>The API private key. Required in all requests.</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="gamejoltapi.GameJoltAPI.username">
+<code class="sig-name descname"><span class="pre">username</span></code><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#gamejoltapi.GameJoltAPI.username" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Username used in some requests. Optional.</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="gamejoltapi.GameJoltAPI.userToken">
+<code class="sig-name descname"><span class="pre">userToken</span></code><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#gamejoltapi.GameJoltAPI.userToken" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>User access token used in some requests. Optional.</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="gamejoltapi.GameJoltAPI.responseFormat">
+<code class="sig-name descname"><span class="pre">responseFormat</span></code><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#gamejoltapi.GameJoltAPI.responseFormat" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>The response format of the requests. Can be <cite>“json”</cite>, <cite>“xml”</cite>, <cite>“keypair”</cite> or <cite>“dump”</cite>. Optional, defaults to <cite>“json”</cite>.</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="gamejoltapi.GameJoltAPI.submitRequests">
+<code class="sig-name descname"><span class="pre">submitRequests</span></code><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#gamejoltapi.GameJoltAPI.submitRequests" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>If submit the requests or just get the generated URLs from the method calls. Useful to generate URLs for batch requests. Optional, defaults to <cite>True</cite>.</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gamejoltapi.GameJoltAPI.batch">
+<code class="sig-name descname"><span class="pre">batch</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">requests</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parallel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">breakOnError</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gamejoltapi.GameJoltAPI.batch" title="Permalink to this definition">¶</a></dt>
+<dd><p>A batch request is a collection of sub-requests that enables developers to 
+send multiple API calls with one HTTP request.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>requests</strong> (<em>list of str</em>) – An list of sub-request URLs. Each request will be executed and the responses of each one will be returned in the payload.</p></li>
+<li><p><strong>parallel</strong> (<em>bool</em>) – By default, each sub-request is processed on the servers sequentially. If this is set to <cite>True</cite>, then all sub-requests are processed at the same time, without waiting for the previous sub-request to finish before the next one is started.</p></li>
+<li><p><strong>breakOnError</strong> (<em>bool</em>) – If this is set to <cite>True</cite>, one sub-request failure will cause the entire batch to stop processing subsequent sub-requests and return a value of false for success.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>The maximum amount of sub requests in one batch request is 50.</p></li>
+<li><p>Dump format is not supported in batch calls.</p></li>
+<li><p>The parallel and breakOnError parameters cannot be used in the same request.</p></li>
+</ul>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Disable request submitting to get URLs from methods</span>
+<span class="n">api</span><span class="o">.</span><span class="n">submitRequests</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="c1"># Generate list of request URLs</span>
+<span class="n">requests</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">api</span><span class="o">.</span><span class="n">usersFetch</span><span class="p">(),</span>
+    <span class="n">api</span><span class="o">.</span><span class="n">sessionsCheck</span><span class="p">(),</span>
+    <span class="n">api</span><span class="o">.</span><span class="n">scoresTables</span><span class="p">(),</span>
+    <span class="n">api</span><span class="o">.</span><span class="n">trophiesFetch</span><span class="p">(),</span>
+    <span class="n">api</span><span class="o">.</span><span class="n">dataStoreGetKeys</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">globalData</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="n">api</span><span class="o">.</span><span class="n">friends</span><span class="p">(),</span>
+    <span class="n">api</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="p">]</span>
+
+<span class="c1"># Enable request submitting again</span>
+<span class="n">api</span><span class="o">.</span><span class="n">submitRequests</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># Submit batch request and get all results</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="n">requests</span><span class="o">=</span><span class="n">requests</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gamejoltapi.GameJoltAPI.dataStoreFetch">
+<code class="sig-name descname"><span class="pre">dataStoreFetch</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">globalData</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gamejoltapi.GameJoltAPI.dataStoreFetch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns data from the data store.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>) – The key of the data item you’d like to fetch.</p></li>
+<li><p><strong>globalData</strong> (<em>bool</em>) – If set to <cite>True</cite>, ignores username and userToken and processes global data instead of user data.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get &quot;some_global_value&quot; from global data store</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">dataStoreFetch</span><span class="p">(</span><span class="s2">&quot;some_global_value&quot;</span><span class="p">,</span> <span class="n">globalData</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gamejoltapi.GameJoltAPI.dataStoreGetKeys">
+<code class="sig-name descname"><span class="pre">dataStoreGetKeys</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">globalData</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gamejoltapi.GameJoltAPI.dataStoreGetKeys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns either all the keys in the game’s global data store, 
+or all the keys in a user’s data store.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pattern</strong> (<em>str</em>) – The pattern to apply to the key names in the data store.</p></li>
+<li><p><strong>globalData</strong> (<em>bool</em>) – If set to <cite>True</cite>, ignores username and userToken and processes global data instead of user data.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>If you apply a pattern to the request, only keys with applicable key names will be returned. The placeholder character for patterns is <code class="docutils literal notranslate"><span class="pre">*</span></code>.</p></li>
+<li><p>This request will return a list of the <code class="docutils literal notranslate"><span class="pre">key</span></code> values. The <code class="docutils literal notranslate"><span class="pre">key</span></code> return value can appear more than once.</p></li>
+</ul>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get keys from global data store starting with &quot;some_global&quot;</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">dataStoreGetKeys</span><span class="p">(</span><span class="s2">&quot;some_global_*&quot;</span><span class="p">,</span> <span class="n">globalData</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gamejoltapi.GameJoltAPI.dataStoreRemove">
+<code class="sig-name descname"><span class="pre">dataStoreRemove</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">globalData</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gamejoltapi.GameJoltAPI.dataStoreRemove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes data from the data store.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>) – The key of the data item you’d like to remove.</p></li>
+<li><p><strong>globalData</strong> (<em>bool</em>) – If set to <cite>True</cite>, ignores username and userToken and processes global data instead of user data.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remove &quot;some_global_value&quot; from global data store</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">dataStoreRemove</span><span class="p">(</span><span class="s2">&quot;some_global_value&quot;</span><span class="p">,</span> <span class="n">globalData</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gamejoltapi.GameJoltAPI.dataStoreSet">
+<code class="sig-name descname"><span class="pre">dataStoreSet</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">globalData</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gamejoltapi.GameJoltAPI.dataStoreSet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets data in the data store.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>) – The key of the data item you’d like to set.</p></li>
+<li><p><strong>data</strong> (<em>str</em>) – The data you’d like to set.</p></li>
+<li><p><strong>globalData</strong> (<em>bool</em>) – If set to <cite>True</cite>, ignores username and userToken and processes global data instead of user data.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can create new data store items by passing in a key that doesn’t yet exist in the data store.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Store on the key &quot;some_global_value&quot; the data &quot;500&quot; in the global data store</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">dataStoreSet</span><span class="p">(</span><span class="s2">&quot;some_global_value&quot;</span><span class="p">,</span> <span class="s2">&quot;500&quot;</span><span class="p">,</span> <span class="n">globalData</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gamejoltapi.GameJoltAPI.dataStoreUpdate">
+<code class="sig-name descname"><span class="pre">dataStoreUpdate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">operation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">globalData</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gamejoltapi.GameJoltAPI.dataStoreUpdate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates data in the data store.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>) – The key of the data item you’d like to update.</p></li>
+<li><p><strong>operation</strong> (<em>str</em>) – The operation you’d like to perform.</p></li>
+<li><p><strong>value</strong> (<em>str</em>) – The value you’d like to apply to the data store item. (See values below.)</p></li>
+<li><p><strong>globalData</strong> (<em>bool</em>) – If set to <cite>True</cite>, ignores username and userToken and processes global data instead of user data.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Valid Values for <code class="docutils literal notranslate"><span class="pre">operation</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;add&quot;</span></code>: Adds the <code class="docutils literal notranslate"><span class="pre">value</span></code> to the current data store item.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;subtract&quot;</span></code>: Substracts the <code class="docutils literal notranslate"><span class="pre">value</span></code> from the current data store item.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;multiply&quot;</span></code>: Multiplies the <code class="docutils literal notranslate"><span class="pre">value</span></code> by the current data store item.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;divide&quot;</span></code>: Divides the current data store item by the <code class="docutils literal notranslate"><span class="pre">value</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;append&quot;</span></code>: Appends the <code class="docutils literal notranslate"><span class="pre">value</span></code> to the current data store item.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;prepend&quot;</span></code>: Prepends the <code class="docutils literal notranslate"><span class="pre">value</span></code> to the current data store item.</p></li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can only perform mathematic operations on numerical data.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Adds &quot;100&quot; to &quot;some_global_value&quot; in the global data store</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">dataStoreUpdate</span><span class="p">(</span><span class="s2">&quot;some_global_value&quot;</span><span class="p">,</span> <span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="s2">&quot;100&quot;</span><span class="p">,</span> <span class="n">globalData</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gamejoltapi.GameJoltAPI.friends">
+<code class="sig-name descname"><span class="pre">friends</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gamejoltapi.GameJoltAPI.friends" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the list of a user’s friends.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gamejoltapi.GameJoltAPI.scoresAdd">
+<code class="sig-name descname"><span class="pre">scoresAdd</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">score</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tableId</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guest</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extraData</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thisUser</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gamejoltapi.GameJoltAPI.scoresAdd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a score for a user or guest.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>score</strong> (<em>str</em>) – This is a string value associated with the score. Example: <code class="docutils literal notranslate"><span class="pre">&quot;500</span> <span class="pre">Points&quot;</span></code></p></li>
+<li><p><strong>sort</strong> (<em>int</em>) – This is a numerical sorting value associated with the score. All sorting will be based on this number. Example: <code class="docutils literal notranslate"><span class="pre">500</span></code></p></li>
+<li><p><strong>tableId</strong> – The ID of the score table to submit to.</p></li>
+<li><p><strong>guest</strong> (<em>str</em>) – The guest’s name.</p></li>
+<li><p><strong>extraData</strong> – If there’s any extra data you would like to store as a string, you can use this variable.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>You can either store a score for a user or a guest. If you’re storing for a user, you must pass in the <code class="docutils literal notranslate"><span class="pre">username</span></code> and <code class="docutils literal notranslate"><span class="pre">userToken</span></code> parameters in the class constructor and set <code class="docutils literal notranslate"><span class="pre">thisUser=True</span></code>. If you’re storing for a guest, you must pass in the <code class="docutils literal notranslate"><span class="pre">guest</span></code> parameter and leave <code class="docutils literal notranslate"><span class="pre">thisUser=False</span></code>.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">extraData</span></code> value is only retrievable through the API and your game’s dashboard. It’s never displayed publicly to users on the site. If there is other data associated with the score such as time played, coins collected, etc., you should definitely include it. It will be helpful in cases where you believe a gamer has illegitimately achieved a high score.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">tableId</span></code> is left blank, the score will be submitted to the primary high score table.</p></li>
+</ul>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gamejoltapi.GameJoltAPI.scoresFetch">
+<code class="sig-name descname"><span class="pre">scoresFetch</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tableId</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guest</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">betterThan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">worseThan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thisUser</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gamejoltapi.GameJoltAPI.scoresFetch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of scores either for a user or globally for a game.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>limit</strong> (<em>int</em>) – The number of scores you’d like to return.</p></li>
+<li><p><strong>tableId</strong> (<em>int</em>) – The ID of the score table.</p></li>
+<li><p><strong>guest</strong> (<em>str</em>) – A guest’s name.</p></li>
+<li><p><strong>betterThan</strong> (<em>int</em>) – Fetch only scores better than this score sort value.</p></li>
+<li><p><strong>worseThan</strong> (<em>int</em>) – Fetch only scores worse than this score sort value.</p></li>
+<li><p><strong>thisUser</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, fetch only scores of current user. Else, fetch scores of all users.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>The default value for <code class="docutils literal notranslate"><span class="pre">limit</span></code> is <code class="docutils literal notranslate"><span class="pre">10</span></code> scores. The maximum amount of scores you can retrieve is <code class="docutils literal notranslate"><span class="pre">100</span></code>.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">tableId</span></code> is left blank, the scores from the primary score table will be returned.</p></li>
+<li><p>Only pass in <code class="docutils literal notranslate"><span class="pre">thisUser=True</span></code> if you would like to retrieve scores for just the user set in the class constructor. Leave <code class="docutils literal notranslate"><span class="pre">thisUser=False</span></code> and <code class="docutils literal notranslate"><span class="pre">guest=None</span></code> to retrieve all scores.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">guest</span></code> allows you to fetch scores by a specific guest name. Only pass either the <code class="docutils literal notranslate"><span class="pre">thisUser=True</span></code> or the <code class="docutils literal notranslate"><span class="pre">guest</span></code> (or none), never both.</p></li>
+<li><p>Scores are returned in the order of the score table’s sorting direction. e.g. for descending tables the bigger scores are returned first.</p></li>
+</ul>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gamejoltapi.GameJoltAPI.scoresGetRank">
+<code class="sig-name descname"><span class="pre">scoresGetRank</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sort</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tableId</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gamejoltapi.GameJoltAPI.scoresGetRank" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the rank of a particular score on a score table.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sort</strong> (<em>int</em>) – This is a numerical sorting value that is represented by a rank on the score table.</p></li>
+<li><p><strong>tableId</strong> (<em>int</em>) – The ID of the score table from which you want to get the rank.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>If <code class="docutils literal notranslate"><span class="pre">tableId</span></code> is left blank, the ranks from the primary high score table will be returned.</p></li>
+<li><p>If the score is not represented by any rank on the score table, the request will return the rank that is closest to the requested score.</p></li>
+</ul>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gamejoltapi.GameJoltAPI.scoresTables">
+<code class="sig-name descname"><span class="pre">scoresTables</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gamejoltapi.GameJoltAPI.scoresTables" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of high score tables for a game.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gamejoltapi.GameJoltAPI.sessionsCheck">
+<code class="sig-name descname"><span class="pre">sessionsCheck</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gamejoltapi.GameJoltAPI.sessionsCheck" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks to see if there is an open session for the user. Can be used to see 
+if a particular user account is active in the game.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This endpoint returns <code class="docutils literal notranslate"><span class="pre">false</span></code> for the <code class="docutils literal notranslate"><span class="pre">success</span></code> field when no open session exists. That behaviour is different from other endpoints which use this field to indicate an error state.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gamejoltapi.GameJoltAPI.sessionsClose">
+<code class="sig-name descname"><span class="pre">sessionsClose</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gamejoltapi.GameJoltAPI.sessionsClose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Closes the active session.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gamejoltapi.GameJoltAPI.sessionsOpen">
+<code class="sig-name descname"><span class="pre">sessionsOpen</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gamejoltapi.GameJoltAPI.sessionsOpen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Opens a game session for a particular user and allows you to tell Game Jolt 
+that a user is playing your game. You must ping the session to keep it active 
+and you must close it when you’re done with it.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can only have one open session for a user at a time. If you try to open a new session while one is running, the system will close out the current one before opening the new one.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gamejoltapi.GameJoltAPI.sessionsPing">
+<code class="sig-name descname"><span class="pre">sessionsPing</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gamejoltapi.GameJoltAPI.sessionsPing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pings an open session to tell the system that it’s still active. If the session 
+hasn’t been pinged within 120 seconds, the system will close the session and you 
+will have to open another one. It’s recommended that you ping about every 30 
+seconds or so to keep the system from clearing out your session.</p>
+<p>You can also let the system know whether the player is in an active or idle state 
+within your game.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>status</strong> (<em>str</em>) – Sets the status of the session.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Valid Values for <code class="docutils literal notranslate"><span class="pre">status</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;active&quot;</span></code>: Sets the session to the <code class="docutils literal notranslate"><span class="pre">&quot;active&quot;</span></code> state.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;idle&quot;</span></code>: Sets the session to the <code class="docutils literal notranslate"><span class="pre">&quot;idle&quot;</span></code> state.</p></li>
+</ul>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gamejoltapi.GameJoltAPI.time">
+<code class="sig-name descname"><span class="pre">time</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gamejoltapi.GameJoltAPI.time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the time of the Game Jolt server.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gamejoltapi.GameJoltAPI.trophiesAddAchieved">
+<code class="sig-name descname"><span class="pre">trophiesAddAchieved</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trophyId</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gamejoltapi.GameJoltAPI.trophiesAddAchieved" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets a trophy as achieved for a particular user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>trophyId</strong> (<em>int</em>) – The ID of the trophy to add for the user.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gamejoltapi.GameJoltAPI.trophiesFetch">
+<code class="sig-name descname"><span class="pre">trophiesFetch</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">achieved</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trophyId</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gamejoltapi.GameJoltAPI.trophiesFetch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns one trophy or multiple trophies, depending on the parameters passed in.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>achieved</strong> (<em>bool</em>) – Pass in <code class="docutils literal notranslate"><span class="pre">True</span></code> to return only the achieved trophies for a user. Pass in <code class="docutils literal notranslate"><span class="pre">False</span></code> to return only trophies the user hasn’t achieved. Leave blank to retrieve all trophies.</p></li>
+<li><p><strong>trophyId</strong> (<em>int</em>) – If you would like to return just one trophy, you may pass the trophy ID with this parameter. If you do, only that trophy will be returned in the response. You may also pass multiple trophy IDs here if you want to return a subset of all the trophies. You do this as a comma-separated list in the same way you would for retrieving multiple users. Passing a <code class="docutils literal notranslate"><span class="pre">trophyId</span></code> will ignore the <code class="docutils literal notranslate"><span class="pre">achieved</span></code> parameter if it is passed.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gamejoltapi.GameJoltAPI.trophiesRemoveAchieved">
+<code class="sig-name descname"><span class="pre">trophiesRemoveAchieved</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trophyId</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gamejoltapi.GameJoltAPI.trophiesRemoveAchieved" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a previously achieved trophy for a particular user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>trophyId</strong> (<em>int</em>) – The ID of the trophy to remove from the user.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gamejoltapi.GameJoltAPI.usersAuth">
+<code class="sig-name descname"><span class="pre">usersAuth</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gamejoltapi.GameJoltAPI.usersAuth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Authenticates the user’s information. This should be done before you make 
+any calls for the user, to make sure the user’s credentials (username and 
+token) are valid.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gamejoltapi.GameJoltAPI.usersFetch">
+<code class="sig-name descname"><span class="pre">usersFetch</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">userId</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gamejoltapi.GameJoltAPI.usersFetch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a user’s data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>username</strong> (<em>str</em>) – The username of the user whose data you’d like to fetch.</p></li>
+<li><p><strong>userId</strong> (<em>str</em><em>, </em><em>int</em><em> or </em><em>list</em>) – The ID of the user whose data you’d like to fetch.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Only one parameter, <code class="docutils literal notranslate"><span class="pre">username</span></code> or <code class="docutils literal notranslate"><span class="pre">userId</span></code>, is required.</p></li>
+<li><p>You can pass in multiple user ids by providing a list or separating them with commas (<code class="docutils literal notranslate"><span class="pre">','</span></code>).</p></li>
+</ul>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div></blockquote>
+</div>
+<div class="section" id="exceptions">
+<h2>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="gamejoltapi.GameJoltDataRequired">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gamejoltapi.</span></code><code class="sig-name descname"><span class="pre">GameJoltDataRequired</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gamejoltapi.GameJoltDataRequired" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception raised when not all required data is provided in the request call.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> (<em>str</em>) – The data field name which is required.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="gamejoltapi.GameJoltDataCollision">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gamejoltapi.</span></code><code class="sig-name descname"><span class="pre">GameJoltDataCollision</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keys</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gamejoltapi.GameJoltDataCollision" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception raised when a value cannot be provided along with another.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>keys</strong> (<em>list</em>) – The data field names which collided.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Joel Gomes da Silva.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
