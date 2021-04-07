@@ -1,14 +1,11 @@
-from urllib.parse import urlencode, quote
-from urllib.request import Request, urlopen
-import hashlib
+from urllib.parse import urlencode as __urlencode, quote as __quote
+from urllib.request import urlopen as __urlopen
+from hashlib import md5 as __md5
 
-from ast import literal_eval
-from collections import OrderedDict
-from pprint import pprint, pformat
+from ast import literal_eval as __literal_eval
+from collections import OrderedDict as __OrderedDict
 
-_DEBUG = False
-API_URL = "https://api.gamejolt.com/api/game/v1_2"
-RETURN_FORMATS = ["json", "keypair", "dump", "xml"]
+__DEBUG = False
 
 class GameJoltDataRequired(Exception):
     """ Exception raised when not all required data is provided in the request call.
@@ -87,38 +84,41 @@ class GameJoltAPI:
         If submit the requests or just get the generated URLs from the method calls. Useful to generate URLs for batch requests. Optional, defaults to `True`."""
     
     def __init__(self, gameId, privateKey, username=None, userToken=None, responseFormat="json", submitRequests=True):
+        self.__API_URL = "https://api.gamejolt.com/api/game/v1_2"
+        self.__RETURN_FORMATS = ["json", "keypair", "dump", "xml"]
+        
         self.gameId = str(gameId)
         self.privateKey = privateKey
         self.username = username
         self.userToken = userToken
-        self.responseFormat = responseFormat if responseFormat in RETURN_FORMATS else "json"
+        self.responseFormat = responseFormat if responseFormat in self.__RETURN_FORMATS else "json"
         self.submitRequests = submitRequests
         self.operations = {
-            "users/fetch" : API_URL + "/users/" + "?",
-            "users/auth" : API_URL + "/users/auth/" + "?",
-            "sessions/open" : API_URL + "/sessions/open/" + "?",
-            "sessions/ping" : API_URL + "/sessions/ping/" + "?",
-            "sessions/check" : API_URL + "/sessions/check/" + "?",
-            "sessions/close" : API_URL + "/sessions/close/" + "?",
-            "scores/fetch" : API_URL + "/scores/" + "?",
-            "scores/tables" : API_URL + "/scores/tables/" + "?",
-            "scores/add" : API_URL + "/scores/add/" + "?",
-            "scores/get-rank" : API_URL + "/scores/get-rank/" + "?",
-            "trophies/fetch" : API_URL + "/trophies/" + "?",
-            "trophies/add-achieved" : API_URL + "/trophies/add-achieved/" + "?",
-            "trophies/remove-achieved" : API_URL + "/trophies/remove-achieved/" + "?",
-            "data-store/set" : API_URL + "/data-store/set/" + "?",
-            "data-store/update" : API_URL + "/data-store/update/" + "?",
-            "data-store/remove" : API_URL + "/data-store/remove/" + "?",
-            "data-store/fetch" : API_URL + "/data-store/" + "?",
-            "data-store/get-keys" : API_URL + "/data-store/get-keys/" + "?",
-            "friends" : API_URL + "/friends/" + "?",
-            "time" : API_URL + "/time/" + "?",
-            "batch" : API_URL + "/batch/" + "?",
+            "users/fetch" : self.__API_URL + "/users/" + "?",
+            "users/auth" : self.__API_URL + "/users/auth/" + "?",
+            "sessions/open" : self.__API_URL + "/sessions/open/" + "?",
+            "sessions/ping" : self.__API_URL + "/sessions/ping/" + "?",
+            "sessions/check" : self.__API_URL + "/sessions/check/" + "?",
+            "sessions/close" : self.__API_URL + "/sessions/close/" + "?",
+            "scores/fetch" : self.__API_URL + "/scores/" + "?",
+            "scores/tables" : self.__API_URL + "/scores/tables/" + "?",
+            "scores/add" : self.__API_URL + "/scores/add/" + "?",
+            "scores/get-rank" : self.__API_URL + "/scores/get-rank/" + "?",
+            "trophies/fetch" : self.__API_URL + "/trophies/" + "?",
+            "trophies/add-achieved" : self.__API_URL + "/trophies/add-achieved/" + "?",
+            "trophies/remove-achieved" : self.__API_URL + "/trophies/remove-achieved/" + "?",
+            "data-store/set" : self.__API_URL + "/data-store/set/" + "?",
+            "data-store/update" : self.__API_URL + "/data-store/update/" + "?",
+            "data-store/remove" : self.__API_URL + "/data-store/remove/" + "?",
+            "data-store/fetch" : self.__API_URL + "/data-store/" + "?",
+            "data-store/get-keys" : self.__API_URL + "/data-store/get-keys/" + "?",
+            "friends" : self.__API_URL + "/friends/" + "?",
+            "time" : self.__API_URL + "/time/" + "?",
+            "batch" : self.__API_URL + "/batch/" + "?",
         }
         
     def _submit(self, operationUrl, data):
-        orderedData = OrderedDict()
+        orderedData = __OrderedDict()
         isBatch = "batch" in operationUrl
         
         if not self.submitRequests and "format" in data.keys():
@@ -131,22 +131,22 @@ class GameJoltAPI:
         requestUrls = data.pop("requests") if isBatch else []
         requestAsParams = "&".join(["requests[]=" + url for url in requestUrls]) if isBatch else ""
             
-        urlParams = urlencode(data)
+        urlParams = __urlencode(data)
         urlParams += "&" + requestAsParams if isBatch else ""
         urlToSignature = operationUrl + urlParams + self.privateKey
-        signature = hashlib.md5(urlToSignature.encode()).hexdigest()
+        signature = __md5(urlToSignature.encode()).hexdigest()
         finalUrl = operationUrl + urlParams + "&signature=" + signature
         
         if self.submitRequests:
-            if _DEBUG: print("Requesting URL:", finalUrl)
-            response = urlopen(finalUrl).read().decode()
+            if __DEBUG: print("Requesting URL:", finalUrl)
+            response = __urlopen(finalUrl).read().decode()
             
             if self.responseFormat == "json":
-                return literal_eval(response)["response"]
+                return __literal_eval(response)["response"]
             else:
                 return response
         else:
-            if _DEBUG: print("Generated URL:", finalUrl)
+            if __DEBUG: print("Generated URL:", finalUrl)
             return finalUrl
 
     def _validateRequiredData(self, data):
@@ -825,10 +825,10 @@ class GameJoltAPI:
             raise GameJoltDataCollision(["parallel", "break_on_error"])
         
         for i in range(len(requests)):
-            requests[i] = requests[i].replace(API_URL, "")
+            requests[i] = requests[i].replace(self.__API_URL, "")
             requests[i] = requests[i].split("&signature=")[0]
-            requests[i] += "&signature=" + hashlib.md5((requests[i] + self.privateKey).encode()).hexdigest()
-            requests[i] = quote(requests[i].replace(API_URL, ""), safe="")
+            requests[i] += "&signature=" + __md5((requests[i] + self.privateKey).encode()).hexdigest()
+            requests[i] = __quote(requests[i].replace(self.__API_URL, ""), safe="")
         
         # Required data
         data = {
