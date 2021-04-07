@@ -6,6 +6,19 @@ This module is a single threaded Python interface for the
 It contains all GameJolt API endpoints and aims to simplify its use where it's possible.
 The source code of this module can be found `here <https://github.com/bgempire/gamejoltapi>`_.
 
+Installing
+----------
+
+This module is available on the `Python Package Index <https://pypi.org/project/gamejoltapi/>`_. 
+To install it on your Python distribution, simply run on the console:
+
+.. code-block:: bash
+   
+   pip install gamejoltapi
+   
+Basic Usage
+-----------
+
 To instance the main class just provide the required data and you're ready to call any of the API methods.
 
 .. code-block:: python
