@@ -1,8 +1,9 @@
 Python Gamejolt API - Reference
 ===============================
 
-This module is a single threaded Python interface for the `GameJolt API <https://gamejolt.com/game-api/doc>`_ running through HTTP requests.
-It contains all GameJolt API endpoints and aims to be used with less hassle possible.
+This module is a single threaded Python interface for the 
+`GameJolt API <https://gamejolt.com/game-api/doc>`_ running through HTTP requests.
+It contains all GameJolt API endpoints and aims to simplify its use where it's possible.
 The source code of this module can be found `here <https://github.com/bgempire/gamejoltapi>`_.
 
 To instance the main class just provide the required data and you're ready to call any of the API methods.
