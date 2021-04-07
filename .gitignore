@@ -32,3 +32,4 @@ ex_*.*
 .vscode/
 docs/_build/
 docs/_sources/
+tests
