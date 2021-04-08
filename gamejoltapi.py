@@ -1,11 +1,11 @@
-from urllib.parse import urlencode as __urlencode, quote as __quote
-from urllib.request import urlopen as __urlopen
-from hashlib import md5 as __md5
+from urllib.parse import urlencode as _urlencode, quote as _quote
+from urllib.request import urlopen as _urlopen
+from hashlib import md5 as _md5
 
-from ast import literal_eval as __literal_eval
-from collections import OrderedDict as __OrderedDict
+from ast import literal_eval as _literal_eval
+from collections import OrderedDict as _OrderedDict
 
-__DEBUG = False
+_DEBUG = False
 
 class GameJoltDataRequired(Exception):
     """ Exception raised when not all required data is provided in the request call.
@@ -118,7 +118,7 @@ class GameJoltAPI:
         }
         
     def _submit(self, operationUrl, data):
-        orderedData = __OrderedDict()
+        orderedData = _OrderedDict()
         isBatch = "batch" in operationUrl
         
         if not self.submitRequests and "format" in data.keys():
@@ -131,22 +131,22 @@ class GameJoltAPI:
         requestUrls = data.pop("requests") if isBatch else []
         requestAsParams = "&".join(["requests[]=" + url for url in requestUrls]) if isBatch else ""
             
-        urlParams = __urlencode(data)
+        urlParams = _urlencode(data)
         urlParams += "&" + requestAsParams if isBatch else ""
         urlToSignature = operationUrl + urlParams + self.privateKey
-        signature = __md5(urlToSignature.encode()).hexdigest()
+        signature = _md5(urlToSignature.encode()).hexdigest()
         finalUrl = operationUrl + urlParams + "&signature=" + signature
         
         if self.submitRequests:
-            if __DEBUG: print("Requesting URL:", finalUrl)
-            response = __urlopen(finalUrl).read().decode()
+            if _DEBUG: print("Requesting URL:", finalUrl)
+            response = _urlopen(finalUrl).read().decode()
             
             if self.responseFormat == "json":
-                return __literal_eval(response)["response"]
+                return _literal_eval(response)["response"]
             else:
                 return response
         else:
-            if __DEBUG: print("Generated URL:", finalUrl)
+            if _DEBUG: print("Generated URL:", finalUrl)
             return finalUrl
 
     def _validateRequiredData(self, data):
@@ -827,8 +827,8 @@ class GameJoltAPI:
         for i in range(len(requests)):
             requests[i] = requests[i].replace(self.__API_URL, "")
             requests[i] = requests[i].split("&signature=")[0]
-            requests[i] += "&signature=" + __md5((requests[i] + self.privateKey).encode()).hexdigest()
-            requests[i] = __quote(requests[i].replace(self.__API_URL, ""), safe="")
+            requests[i] += "&signature=" + _md5((requests[i] + self.privateKey).encode()).hexdigest()
+            requests[i] = _quote(requests[i].replace(self.__API_URL, ""), safe="")
         
         # Required data
         data = {
