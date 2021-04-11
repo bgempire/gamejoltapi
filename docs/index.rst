@@ -1,5 +1,5 @@
-Python Gamejolt API - Reference
-===============================
+Game Jolt API for Python - Reference
+====================================
 
 This module is a single threaded Python interface for the 
 `Game Jolt API <https://gamejolt.com/game-api/doc>`_ running through HTTP requests.
@@ -21,7 +21,7 @@ Or if you want to download it manually, just download the latest
 from the source code repository.
    
 Basic Usage
------------download
+-----------
 
 To instance the main class just provide the required data and you're ready to call any of the API methods.
 
