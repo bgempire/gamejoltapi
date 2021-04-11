@@ -5,12 +5,12 @@ with open('README.md') as f:
     readme = f.read()
 
 setup(name="gamejoltapi",
-      version="0.0.1",
+      version="0.0.2",
       author="Joel Gomes da Silva",
       author_email="joelgomes1994@hotmail.com",
-      description="Single threaded Python interface for the GameJolt API running through HTTP requests",
+      description="Single threaded Python wrapper for the Game Jolt API running through HTTP requests",
       license="MIT",
-      keywords="game gamedev api interface gamejolt gamejoltapi",
+      keywords="game jolt gamedev api wrapper interface gamejolt gamejoltapi",
       url="https://github.com/bgempire/gamejoltapi",
       long_description_content_type = "text/markdown",
       long_description=readme,

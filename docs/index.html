@@ -161,8 +161,8 @@
   <div class="section" id="python-gamejolt-api-reference">
 <h1>Python Gamejolt API - Reference<a class="headerlink" href="#python-gamejolt-api-reference" title="Permalink to this headline">¶</a></h1>
 <p>This module is a single threaded Python interface for the
-<a class="reference external" href="https://gamejolt.com/game-api/doc">GameJolt API</a> running through HTTP requests.
-It contains all GameJolt API endpoints and aims to simplify its use where it’s possible.
+<a class="reference external" href="https://gamejolt.com/game-api/doc">Game Jolt API</a> running through HTTP requests.
+It contains all Game Jolt API endpoints and aims to simplify its use where it’s possible.
 The source code of this module can be found <a class="reference external" href="https://github.com/bgempire/gamejoltapi">here</a>.</p>
 <div class="section" id="installing">
 <h2>Installing<a class="headerlink" href="#installing" title="Permalink to this headline">¶</a></h2>
@@ -171,6 +171,9 @@ To install it on your Python distribution, simply run on the console:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install gamejoltapi
 </pre></div>
 </div>
+<p>Or if you want to download it manually, just download the latest
+<a class="reference external" href="https://github.com/bgempire/gamejoltapi/blob/main/gamejoltapi.py">gamejoltapi.py</a>
+from the source code repository.</p>
 </div>
 <div class="section" id="basic-usage">
 <h2>Basic Usage<a class="headerlink" href="#basic-usage" title="Permalink to this headline">¶</a></h2>
@@ -199,7 +202,7 @@ To install it on your Python distribution, simply run on the console:</p>
 <div><dl class="py class">
 <dt id="gamejoltapi.GameJoltAPI">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gamejoltapi.</span></code><code class="sig-name descname"><span class="pre">GameJoltAPI</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gameId</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">privateKey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">userToken</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">responseFormat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'json'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">submitRequests</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gamejoltapi.GameJoltAPI" title="Permalink to this definition">¶</a></dt>
-<dd><p>The main GameJolt API class. Aside from the required arguments, most of the 
+<dd><p>The main Game Jolt API class. Aside from the required arguments, most of the 
 optional arguments are provided to avoid asking for them in every single method.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>

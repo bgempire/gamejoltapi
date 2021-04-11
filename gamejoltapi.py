@@ -32,7 +32,7 @@ class GameJoltDataCollision(Exception):
         super().__init__(self.message)
 
 class GameJoltAPI:
-    """ The main GameJolt API class. Aside from the required arguments, most of the 
+    """ The main Game Jolt API class. Aside from the required arguments, most of the 
     optional arguments are provided to avoid asking for them in every single method.
     
     :param gameId: The game ID. Required in all requests.
