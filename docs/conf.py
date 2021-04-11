@@ -47,6 +47,7 @@ master_doc = 'index'
 html_theme = 'sphinx_rtd_theme'
 html_logo = 'logo.png'
 html_favicon = 'favicon.png'
+html_show_sourcelink = False
 
 html_theme_options = {
     'display_version': False,

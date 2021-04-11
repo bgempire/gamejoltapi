@@ -147,8 +147,6 @@
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -210,8 +208,8 @@ optional arguments are provided to avoid asking for them in every single method.
 <li><p><strong>privateKey</strong> (<em>str</em>) – The API private key. Required in all requests.</p></li>
 <li><p><strong>username</strong> (<em>str</em>) – Username used in some requests. Optional.</p></li>
 <li><p><strong>userToken</strong> (<em>str</em>) – User access token used in some requests. Optional.</p></li>
-<li><p><strong>responseFormat</strong> (<em>str</em>) – The response format of the requests. Can be <cite>“json”</cite>, <cite>“xml”</cite>, <cite>“keypair”</cite> or <cite>“dump”</cite>. Optional, defaults to <cite>“json”</cite>.</p></li>
-<li><p><strong>submitRequests</strong> (<em>bool</em>) – If submit the requests or just get the generated URLs from the method calls. Useful to generate URLs for batch requests. Optional, defaults to <cite>True</cite>.</p></li>
+<li><p><strong>responseFormat</strong> (<em>str</em>) – The response format of the requests. Can be <code class="docutils literal notranslate"><span class="pre">&quot;json&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;xml&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;keypair&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;dump&quot;</span></code>. Optional, defaults to <code class="docutils literal notranslate"><span class="pre">&quot;json&quot;</span></code>.</p></li>
+<li><p><strong>submitRequests</strong> (<em>bool</em>) – If submit the requests or just get the generated URLs from the method calls. Useful to generate URLs for batch requests. Optional, defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 </ul>
 </dd>
 </dl>
@@ -249,7 +247,7 @@ optional arguments are provided to avoid asking for them in every single method.
 <dt id="gamejoltapi.GameJoltAPI.responseFormat">
 <code class="sig-name descname"><span class="pre">responseFormat</span></code><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#gamejoltapi.GameJoltAPI.responseFormat" title="Permalink to this definition">¶</a></dt>
 <dd><blockquote>
-<div><p>The response format of the requests. Can be <cite>“json”</cite>, <cite>“xml”</cite>, <cite>“keypair”</cite> or <cite>“dump”</cite>. Optional, defaults to <cite>“json”</cite>.</p>
+<div><p>The response format of the requests. Can be <code class="docutils literal notranslate"><span class="pre">&quot;json&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;xml&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;keypair&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;dump&quot;</span></code>. Optional, defaults to <code class="docutils literal notranslate"><span class="pre">&quot;json&quot;</span></code>.</p>
 </div></blockquote>
 </dd></dl>
 
@@ -257,21 +255,20 @@ optional arguments are provided to avoid asking for them in every single method.
 <dt id="gamejoltapi.GameJoltAPI.submitRequests">
 <code class="sig-name descname"><span class="pre">submitRequests</span></code><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#gamejoltapi.GameJoltAPI.submitRequests" title="Permalink to this definition">¶</a></dt>
 <dd><blockquote>
-<div><p>If submit the requests or just get the generated URLs from the method calls. Useful to generate URLs for batch requests. Optional, defaults to <cite>True</cite>.</p>
+<div><p>If submit the requests or just get the generated URLs from the method calls. Useful to generate URLs for batch requests. Optional, defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
 </div></blockquote>
 </dd></dl>
 
 <dl class="py method">
 <dt id="gamejoltapi.GameJoltAPI.batch">
 <code class="sig-name descname"><span class="pre">batch</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">requests</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parallel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">breakOnError</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gamejoltapi.GameJoltAPI.batch" title="Permalink to this definition">¶</a></dt>
-<dd><p>A batch request is a collection of sub-requests that enables developers to 
-send multiple API calls with one HTTP request.</p>
+<dd><p>A batch request is a collection of sub-requests that enables developers to send multiple API calls with one HTTP request.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>requests</strong> (<em>list of str</em>) – An list of sub-request URLs. Each request will be executed and the responses of each one will be returned in the payload.</p></li>
-<li><p><strong>parallel</strong> (<em>bool</em>) – By default, each sub-request is processed on the servers sequentially. If this is set to <cite>True</cite>, then all sub-requests are processed at the same time, without waiting for the previous sub-request to finish before the next one is started.</p></li>
-<li><p><strong>breakOnError</strong> (<em>bool</em>) – If this is set to <cite>True</cite>, one sub-request failure will cause the entire batch to stop processing subsequent sub-requests and return a value of false for success.</p></li>
+<li><p><strong>parallel</strong> (<em>bool</em>) – By default, each sub-request is processed on the servers sequentially. If this is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, then all sub-requests are processed at the same time, without waiting for the previous sub-request to finish before the next one is started.</p></li>
+<li><p><strong>breakOnError</strong> (<em>bool</em>) – If this is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, one sub-request failure will cause the entire batch to stop processing subsequent sub-requests and return a value of <code class="docutils literal notranslate"><span class="pre">&quot;false&quot;</span></code> for success.</p></li>
 </ul>
 </dd>
 </dl>
@@ -280,7 +277,7 @@ send multiple API calls with one HTTP request.</p>
 <ul class="simple">
 <li><p>The maximum amount of sub requests in one batch request is 50.</p></li>
 <li><p>Dump format is not supported in batch calls.</p></li>
-<li><p>The parallel and breakOnError parameters cannot be used in the same request.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">parallel</span></code> and <code class="docutils literal notranslate"><span class="pre">breakOnError</span></code> parameters cannot be used in the same request.</p></li>
 </ul>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Disable request submitting to get URLs from methods</span>
@@ -314,7 +311,7 @@ send multiple API calls with one HTTP request.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>key</strong> (<em>str</em>) – The key of the data item you’d like to fetch.</p></li>
-<li><p><strong>globalData</strong> (<em>bool</em>) – If set to <cite>True</cite>, ignores username and userToken and processes global data instead of user data.</p></li>
+<li><p><strong>globalData</strong> (<em>bool</em>) – If set to <cite>True</cite>, ignores <code class="docutils literal notranslate"><span class="pre">username</span></code> and <code class="docutils literal notranslate"><span class="pre">userToken</span></code> set in constructor and processes global data instead of user data.</p></li>
 </ul>
 </dd>
 </dl>
@@ -327,13 +324,12 @@ send multiple API calls with one HTTP request.</p>
 <dl class="py method">
 <dt id="gamejoltapi.GameJoltAPI.dataStoreGetKeys">
 <code class="sig-name descname"><span class="pre">dataStoreGetKeys</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">globalData</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gamejoltapi.GameJoltAPI.dataStoreGetKeys" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns either all the keys in the game’s global data store, 
-or all the keys in a user’s data store.</p>
+<dd><p>Returns either all the keys in the game’s global data store, or all the keys in a user’s data store.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>pattern</strong> (<em>str</em>) – The pattern to apply to the key names in the data store.</p></li>
-<li><p><strong>globalData</strong> (<em>bool</em>) – If set to <cite>True</cite>, ignores username and userToken and processes global data instead of user data.</p></li>
+<li><p><strong>globalData</strong> (<em>bool</em>) – If set to <cite>True</cite>, ignores <code class="docutils literal notranslate"><span class="pre">username</span></code> and <code class="docutils literal notranslate"><span class="pre">userToken</span></code> set in constructor and processes global data instead of user data.</p></li>
 </ul>
 </dd>
 </dl>
@@ -358,7 +354,7 @@ or all the keys in a user’s data store.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>key</strong> (<em>str</em>) – The key of the data item you’d like to remove.</p></li>
-<li><p><strong>globalData</strong> (<em>bool</em>) – If set to <cite>True</cite>, ignores username and userToken and processes global data instead of user data.</p></li>
+<li><p><strong>globalData</strong> (<em>bool</em>) – If set to <cite>True</cite>, ignores <code class="docutils literal notranslate"><span class="pre">username</span></code> and <code class="docutils literal notranslate"><span class="pre">userToken</span></code> set in constructor and processes global data instead of user data.</p></li>
 </ul>
 </dd>
 </dl>
@@ -377,7 +373,7 @@ or all the keys in a user’s data store.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>key</strong> (<em>str</em>) – The key of the data item you’d like to set.</p></li>
 <li><p><strong>data</strong> (<em>str</em>) – The data you’d like to set.</p></li>
-<li><p><strong>globalData</strong> (<em>bool</em>) – If set to <cite>True</cite>, ignores username and userToken and processes global data instead of user data.</p></li>
+<li><p><strong>globalData</strong> (<em>bool</em>) – If set to <cite>True</cite>, ignores <code class="docutils literal notranslate"><span class="pre">username</span></code> and <code class="docutils literal notranslate"><span class="pre">userToken</span></code> set in constructor and processes global data instead of user data.</p></li>
 </ul>
 </dd>
 </dl>
@@ -401,7 +397,7 @@ or all the keys in a user’s data store.</p>
 <li><p><strong>key</strong> (<em>str</em>) – The key of the data item you’d like to update.</p></li>
 <li><p><strong>operation</strong> (<em>str</em>) – The operation you’d like to perform.</p></li>
 <li><p><strong>value</strong> (<em>str</em>) – The value you’d like to apply to the data store item. (See values below.)</p></li>
-<li><p><strong>globalData</strong> (<em>bool</em>) – If set to <cite>True</cite>, ignores username and userToken and processes global data instead of user data.</p></li>
+<li><p><strong>globalData</strong> (<em>bool</em>) – If set to <cite>True</cite>, ignores <code class="docutils literal notranslate"><span class="pre">username</span></code> and <code class="docutils literal notranslate"><span class="pre">userToken</span></code> set in constructor and processes global data instead of user data.</p></li>
 </ul>
 </dd>
 </dl>
@@ -435,7 +431,7 @@ or all the keys in a user’s data store.</p>
 
 <dl class="py method">
 <dt id="gamejoltapi.GameJoltAPI.scoresAdd">
-<code class="sig-name descname"><span class="pre">scoresAdd</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">score</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tableId</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guest</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extraData</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thisUser</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gamejoltapi.GameJoltAPI.scoresAdd" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">scoresAdd</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">score</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tableId</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guest</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extraData</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gamejoltapi.GameJoltAPI.scoresAdd" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds a score for a user or guest.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -443,7 +439,7 @@ or all the keys in a user’s data store.</p>
 <li><p><strong>score</strong> (<em>str</em>) – This is a string value associated with the score. Example: <code class="docutils literal notranslate"><span class="pre">&quot;500</span> <span class="pre">Points&quot;</span></code></p></li>
 <li><p><strong>sort</strong> (<em>int</em>) – This is a numerical sorting value associated with the score. All sorting will be based on this number. Example: <code class="docutils literal notranslate"><span class="pre">500</span></code></p></li>
 <li><p><strong>tableId</strong> – The ID of the score table to submit to.</p></li>
-<li><p><strong>guest</strong> (<em>str</em>) – The guest’s name.</p></li>
+<li><p><strong>guest</strong> (<em>str</em>) – The guest’s name. Overrides the <code class="docutils literal notranslate"><span class="pre">username</span></code> set in the constructor.</p></li>
 <li><p><strong>extraData</strong> – If there’s any extra data you would like to store as a string, you can use this variable.</p></li>
 </ul>
 </dd>
@@ -451,7 +447,7 @@ or all the keys in a user’s data store.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul class="simple">
-<li><p>You can either store a score for a user or a guest. If you’re storing for a user, you must pass in the <code class="docutils literal notranslate"><span class="pre">username</span></code> and <code class="docutils literal notranslate"><span class="pre">userToken</span></code> parameters in the class constructor and set <code class="docutils literal notranslate"><span class="pre">thisUser=True</span></code>. If you’re storing for a guest, you must pass in the <code class="docutils literal notranslate"><span class="pre">guest</span></code> parameter and leave <code class="docutils literal notranslate"><span class="pre">thisUser=False</span></code>.</p></li>
+<li><p>You can either store a score for a user or a guest. If you’re storing for a user, you must pass in the <code class="docutils literal notranslate"><span class="pre">username</span></code> and <code class="docutils literal notranslate"><span class="pre">userToken</span></code> parameters in the class constructor and leave <code class="docutils literal notranslate"><span class="pre">guest</span></code> as <code class="docutils literal notranslate"><span class="pre">None</span></code>. If you’re storing for a guest, you must pass in the <code class="docutils literal notranslate"><span class="pre">guest</span></code> parameter.</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">extraData</span></code> value is only retrievable through the API and your game’s dashboard. It’s never displayed publicly to users on the site. If there is other data associated with the score such as time played, coins collected, etc., you should definitely include it. It will be helpful in cases where you believe a gamer has illegitimately achieved a high score.</p></li>
 <li><p>If <code class="docutils literal notranslate"><span class="pre">tableId</span></code> is left blank, the score will be submitted to the primary high score table.</p></li>
 </ul>
@@ -520,7 +516,7 @@ or all the keys in a user’s data store.</p>
 if a particular user account is active in the game.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This endpoint returns <code class="docutils literal notranslate"><span class="pre">false</span></code> for the <code class="docutils literal notranslate"><span class="pre">success</span></code> field when no open session exists. That behaviour is different from other endpoints which use this field to indicate an error state.</p>
+<p>This endpoint returns <code class="docutils literal notranslate"><span class="pre">&quot;false&quot;</span></code> for the <code class="docutils literal notranslate"><span class="pre">&quot;success&quot;</span></code> field when no open session exists. That behaviour is different from other endpoints which use this field to indicate an error state.</p>
 </div>
 </dd></dl>
 
@@ -591,7 +587,7 @@ within your game.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>achieved</strong> (<em>bool</em>) – Pass in <code class="docutils literal notranslate"><span class="pre">True</span></code> to return only the achieved trophies for a user. Pass in <code class="docutils literal notranslate"><span class="pre">False</span></code> to return only trophies the user hasn’t achieved. Leave blank to retrieve all trophies.</p></li>
-<li><p><strong>trophyId</strong> (<em>int</em>) – If you would like to return just one trophy, you may pass the trophy ID with this parameter. If you do, only that trophy will be returned in the response. You may also pass multiple trophy IDs here if you want to return a subset of all the trophies. You do this as a comma-separated list in the same way you would for retrieving multiple users. Passing a <code class="docutils literal notranslate"><span class="pre">trophyId</span></code> will ignore the <code class="docutils literal notranslate"><span class="pre">achieved</span></code> parameter if it is passed.</p></li>
+<li><p><strong>trophyId</strong> (<em>str</em><em>, </em><em>int</em><em> or </em><em>list</em>) – If you would like to return just one trophy, you may pass the trophy ID with this parameter. If you do, only that trophy will be returned in the response. You may also pass multiple trophy IDs here if you want to return a subset of all the trophies. You do this as a list or a string with comma-separated values in the same way you would for retrieving multiple users (example: <code class="docutils literal notranslate"><span class="pre">&quot;13,89,35&quot;</span></code>). Passing a <code class="docutils literal notranslate"><span class="pre">trophyId</span></code> will ignore the <code class="docutils literal notranslate"><span class="pre">achieved</span></code> parameter if it is passed.</p></li>
 </ul>
 </dd>
 </dl>
@@ -632,7 +628,7 @@ token) are valid.</p>
 <p class="admonition-title">Note</p>
 <ul class="simple">
 <li><p>Only one parameter, <code class="docutils literal notranslate"><span class="pre">username</span></code> or <code class="docutils literal notranslate"><span class="pre">userId</span></code>, is required.</p></li>
-<li><p>You can pass in multiple user ids by providing a list or separating them with commas (<code class="docutils literal notranslate"><span class="pre">','</span></code>).</p></li>
+<li><p>You can pass in multiple user ids by providing a list or separating them with commas in a string (example: <code class="docutils literal notranslate"><span class="pre">&quot;13,89,35&quot;</span></code>).</p></li>
 </ul>
 </div>
 </dd></dl>

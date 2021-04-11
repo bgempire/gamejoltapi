@@ -47,10 +47,10 @@ class GameJoltAPI:
     :param userToken: User access token used in some requests. Optional.
     :type userToken: str
     
-    :param responseFormat: The response format of the requests. Can be `"json"`, `"xml"`, `"keypair"` or `"dump"`. Optional, defaults to `"json"`.
+    :param responseFormat: The response format of the requests. Can be ``"json"``, ``"xml"``, ``"keypair"`` or ``"dump"``. Optional, defaults to ``"json"``.
     :type responseFormat: str
     
-    :param submitRequests: If submit the requests or just get the generated URLs from the method calls. Useful to generate URLs for batch requests. Optional, defaults to `True`.
+    :param submitRequests: If submit the requests or just get the generated URLs from the method calls. Useful to generate URLs for batch requests. Optional, defaults to ``True``.
     :type submitRequests: bool
     
     .. py:attribute:: gameId
@@ -76,12 +76,12 @@ class GameJoltAPI:
     .. py:attribute:: responseFormat
        :type: str
        
-        The response format of the requests. Can be `"json"`, `"xml"`, `"keypair"` or `"dump"`. Optional, defaults to `"json"`.
+        The response format of the requests. Can be ``"json"``, ``"xml"``, ``"keypair"`` or ``"dump"``. Optional, defaults to ``"json"``.
     
     .. py:attribute:: submitRequests
        :type: bool
        
-        If submit the requests or just get the generated URLs from the method calls. Useful to generate URLs for batch requests. Optional, defaults to `True`."""
+        If submit the requests or just get the generated URLs from the method calls. Useful to generate URLs for batch requests. Optional, defaults to ``True``."""
     
     def __init__(self, gameId, privateKey, username=None, userToken=None, responseFormat="json", submitRequests=True):
         self.__API_URL = "https://api.gamejolt.com/api/game/v1_2"
@@ -182,7 +182,7 @@ class GameJoltAPI:
         .. note::
            
            - Only one parameter, ``username`` or ``userId``, is required.
-           - You can pass in multiple user ids by providing a list or separating them with commas (``','``)."""
+           - You can pass in multiple user ids by providing a list or separating them with commas in a string (example: ``"13,89,35"``)."""
         
         if type(userId) in (list, tuple, set):
             userId = ",".join(userId)
@@ -281,7 +281,7 @@ class GameJoltAPI:
         
         .. note::
            
-           This endpoint returns ``false`` for the ``success`` field when no open session exists. That behaviour is different from other endpoints which use this field to indicate an error state.
+           This endpoint returns ``"false"`` for the ``"success"`` field when no open session exists. That behaviour is different from other endpoints which use this field to indicate an error state.
 
         """
         
@@ -371,7 +371,7 @@ class GameJoltAPI:
         self._validateRequiredData(data)
         return self._submit(self.operations["scores/tables"], data)
         
-    def scoresAdd(self, score, sort, tableId=None, guest=None, extraData=None, thisUser=True):
+    def scoresAdd(self, score, sort, tableId=None, guest=None, extraData=None):
         """Adds a score for a user or guest. 
         
         :param score: This is a string value associated with the score. Example: ``"500 Points"``
@@ -383,7 +383,7 @@ class GameJoltAPI:
         :param tableId: The ID of the score table to submit to.
         :type table_id: int
         
-        :param guest: The guest's name.
+        :param guest: The guest's name. Overrides the ``username`` set in the constructor.
         :type guest: str
         
         :param extraData: If there's any extra data you would like to store as a string, you can use this variable.
@@ -391,14 +391,11 @@ class GameJoltAPI:
         
         .. note::
            
-           - You can either store a score for a user or a guest. If you're storing for a user, you must pass in the ``username`` and ``userToken`` parameters in the class constructor and set ``thisUser=True``. If you're storing for a guest, you must pass in the ``guest`` parameter and leave ``thisUser=False``.
+           - You can either store a score for a user or a guest. If you're storing for a user, you must pass in the ``username`` and ``userToken`` parameters in the class constructor and leave ``guest`` as ``None``. If you're storing for a guest, you must pass in the ``guest`` parameter.
            - The ``extraData`` value is only retrievable through the API and your game's dashboard. It's never displayed publicly to users on the site. If there is other data associated with the score such as time played, coins collected, etc., you should definitely include it. It will be helpful in cases where you believe a gamer has illegitimately achieved a high score.
            - If ``tableId`` is left blank, the score will be submitted to the primary high score table.
         
         """
-        
-        if guest is not None and thisUser and self.username is not None:
-            raise GameJoltDataCollision(["guest", "username"])
         
         # Required data
         data = {
@@ -409,17 +406,12 @@ class GameJoltAPI:
         
         # Optional data
         optionalData = {
-            "username" : self.username if thisUser and guest is None else None,
-            "user_token" : self.userToken if thisUser and guest is None else None,
+            "username" : self.username if guest is None else None,
+            "user_token" : self.userToken if guest is None else None,
             "table_id" : tableId,
-            "guest" : guest if guest is not None and not thisUser else None,
+            "guest" : guest if guest is not None else None,
             "extra_data" : extraData,
         }
-        
-        # Add guest score if guest is provided
-        if optionalData["guest"] is not None:
-            optionalData["username"] = None
-            optionalData["user_token"] = None
         
         self._validateRequiredData(data)
         data.update(self._getValidData(optionalData))
@@ -462,10 +454,13 @@ class GameJoltAPI:
         :param achieved: Pass in ``True`` to return only the achieved trophies for a user. Pass in ``False`` to return only trophies the user hasn't achieved. Leave blank to retrieve all trophies.
         :type achieved: bool
         
-        :param trophyId: If you would like to return just one trophy, you may pass the trophy ID with this parameter. If you do, only that trophy will be returned in the response. You may also pass multiple trophy IDs here if you want to return a subset of all the trophies. You do this as a comma-separated list in the same way you would for retrieving multiple users. Passing a ``trophyId`` will ignore the ``achieved`` parameter if it is passed.
-        :type trophyId: int
+        :param trophyId: If you would like to return just one trophy, you may pass the trophy ID with this parameter. If you do, only that trophy will be returned in the response. You may also pass multiple trophy IDs here if you want to return a subset of all the trophies. You do this as a list or a string with comma-separated values in the same way you would for retrieving multiple users (example: ``"13,89,35"``). Passing a ``trophyId`` will ignore the ``achieved`` parameter if it is passed.
+        :type trophyId: str, int or list
         
         """
+        
+        if type(trophyId) in (list, tuple, set):
+            trophyId = ",".join(trophyId)
         
         # Required data
         data = {
@@ -476,7 +471,7 @@ class GameJoltAPI:
         
         # Optional data
         optionalData = {
-            "achieved" : self._processBoolean(achieved),
+            "achieved" : self._processBoolean(achieved) if trophyId is None else None,
             "trophy_id" : trophyId
         }
         
@@ -533,7 +528,7 @@ class GameJoltAPI:
         :param data: The data you'd like to set.
         :type data: str
         
-        :param globalData: If set to `True`, ignores username and userToken and processes global data instead of user data.
+        :param globalData: If set to `True`, ignores ``username`` and ``userToken`` set in constructor and processes global data instead of user data.
         :type globalData: bool
         
         .. note::
@@ -582,7 +577,7 @@ class GameJoltAPI:
         :param value: The value you'd like to apply to the data store item. (See values below.)
         :type value: str
         
-        :param globalData: If set to `True`, ignores username and userToken and processes global data instead of user data.
+        :param globalData: If set to `True`, ignores ``username`` and ``userToken`` set in constructor and processes global data instead of user data.
         :type globalData: bool
         
         .. note::
@@ -637,7 +632,7 @@ class GameJoltAPI:
         :param key: The key of the data item you'd like to remove.
         :type key: str
         
-        :param globalData: If set to `True`, ignores username and userToken and processes global data instead of user data.
+        :param globalData: If set to `True`, ignores ``username`` and ``userToken`` set in constructor and processes global data instead of user data.
         :type globalData: bool
         
         .. code-block:: python
@@ -675,7 +670,7 @@ class GameJoltAPI:
         :param key: The key of the data item you'd like to fetch.
         :type key: str
         
-        :param globalData: If set to `True`, ignores username and userToken and processes global data instead of user data.
+        :param globalData: If set to `True`, ignores ``username`` and ``userToken`` set in constructor and processes global data instead of user data.
         :type globalData: bool
         
         .. code-block:: python
@@ -708,13 +703,12 @@ class GameJoltAPI:
         return self._submit(self.operations["data-store/fetch"], data)
         
     def dataStoreGetKeys(self, pattern=None, globalData=False):
-        """Returns either all the keys in the game's global data store, 
-        or all the keys in a user's data store.
+        """Returns either all the keys in the game's global data store, or all the keys in a user's data store.
         
         :param pattern: The pattern to apply to the key names in the data store.
         :type pattern: str
         
-        :param globalData: If set to `True`, ignores username and userToken and processes global data instead of user data.
+        :param globalData: If set to `True`, ignores ``username`` and ``userToken`` set in constructor and processes global data instead of user data.
         :type globalData: bool
         
         .. note::
@@ -780,22 +774,21 @@ class GameJoltAPI:
     
     # Batch Calls
     def batch(self, requests=[], parallel=None, breakOnError=None):
-        """A batch request is a collection of sub-requests that enables developers to 
-        send multiple API calls with one HTTP request. 
+        """A batch request is a collection of sub-requests that enables developers to send multiple API calls with one HTTP request. 
         
         :param requests: An list of sub-request URLs. Each request will be executed and the responses of each one will be returned in the payload.
         :type requests: list of str
         
-        :param parallel: By default, each sub-request is processed on the servers sequentially. If this is set to `True`, then all sub-requests are processed at the same time, without waiting for the previous sub-request to finish before the next one is started.
+        :param parallel: By default, each sub-request is processed on the servers sequentially. If this is set to ``True``, then all sub-requests are processed at the same time, without waiting for the previous sub-request to finish before the next one is started.
         :type parallel: bool
         
-        :param breakOnError: If this is set to `True`, one sub-request failure will cause the entire batch to stop processing subsequent sub-requests and return a value of false for success.
+        :param breakOnError: If this is set to ``True``, one sub-request failure will cause the entire batch to stop processing subsequent sub-requests and return a value of ``"false"`` for success.
         :type breakOnError: bool
         
         .. note::
            - The maximum amount of sub requests in one batch request is 50.
            - Dump format is not supported in batch calls.
-           - The parallel and breakOnError parameters cannot be used in the same request.
+           - The ``parallel`` and ``breakOnError`` parameters cannot be used in the same request.
         
         .. code-block:: python
            
