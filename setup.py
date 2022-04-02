@@ -5,7 +5,7 @@ with open('README.md') as f:
     readme = f.read()
 
 setup(name="gamejoltapi",
-      version="0.0.2",
+      version="0.0.3",
       author="Joel Gomes da Silva",
       author_email="joelgomes1994@hotmail.com",
       description="Single threaded Python wrapper for the Game Jolt API running through HTTP requests",
