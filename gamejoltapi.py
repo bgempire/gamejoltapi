@@ -1,11 +1,14 @@
+import ssl as _ssl
+
 from urllib.parse import urlencode as _urlencode, quote as _quote
 from urllib.request import urlopen as _urlopen
 from hashlib import md5 as _md5
-
 from ast import literal_eval as _literal_eval
 from collections import OrderedDict as _OrderedDict
 
 _DEBUG = False
+_ssl._create_default_https_context = _ssl._create_unverified_context
+
 
 class GameJoltDataRequired(Exception):
     """ Exception raised when not all required data is provided in the request call.
